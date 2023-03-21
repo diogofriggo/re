@@ -70,10 +70,11 @@ fn main() -> Result<()> {
 
     let from = Regex::new(&args.from)?;
     let _to_can_be_converted_to_a_regex = Regex::new(&args.to)?;
+
     if !args.force {
         println!("Changes to be applied if you pass -f:");
     }
-    // flatten converts vec![Some(_), None, Some(_)] into vec![_, _]
+
     for entry in fs::read_dir(&folder)? {
         if let Err(err) = &entry {
             if args.verbose {
